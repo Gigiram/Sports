@@ -5,7 +5,7 @@ from openai import OpenAI
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Title of the app
-st.title("Health Symptom Checker")
+st.title("Sports Smart Checker")
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:
@@ -18,7 +18,7 @@ for message in st.session_state.messages:
         st.markdown(content)
 
 # Collect user input for symptoms
-user_input = st.chat_input("Describe your symptoms here...")
+user_input = st.chat_input("Describe your Sports related questions here...")
 
 # Function to get a response from OpenAI with health advice
 def get_response(prompt):
@@ -41,7 +41,7 @@ if user_input:
         st.markdown(user_input)
 
     # Generate assistant's response
-    assistant_prompt = f"User has reported the following symptoms: {user_input}. Provide a general remedy or advice."
+    assistant_prompt = f"User has reported the following symptoms: {user_input}. Provide a detail advice."
     assistant_response = get_response(assistant_prompt)
     st.session_state.messages.append({"role": "assistant", "content": assistant_response})
     
