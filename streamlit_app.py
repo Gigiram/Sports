@@ -17,12 +17,12 @@ for message in st.session_state.messages:
     with st.chat_message(role):
         st.markdown(content)
 
-# Collect user input for symptoms
+# Collect user input for sports related questions
 user_input = st.chat_input("Describe your Sports related questions here...")
 
-# Function to get a response from OpenAI with health advice
+# Function to get a response from OpenAI with sports related advice
 def get_response(prompt):
-    # Here, you may include a more specific prompt or fine-tune the assistant's instructions to provide general remedies
+    # Here, you may include a more specific prompt or fine-tune the assistant's instructions to provide general advice
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -41,7 +41,7 @@ if user_input:
         st.markdown(user_input)
 
     # Generate assistant's response
-    assistant_prompt = f"User has reported the following symptoms: {user_input}. Provide a detail advice."
+    assistant_prompt = f"User has reported the following Sports related questions: {user_input}. Provide a detail advice."
     assistant_response = get_response(assistant_prompt)
     st.session_state.messages.append({"role": "assistant", "content": assistant_response})
     
